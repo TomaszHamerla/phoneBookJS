@@ -24,13 +24,13 @@ function addContact() {
     phoneBook.push(new contact(name, number));
     displayContacts();
   }
+  console.log(phoneBook.length);
 }
 
 function displayContacts() {
   const contactsList = document.getElementById("contactsList");
-  phoneBook.forEach((contact) => {
-    printContact(contact.name, contact.number);
-  });
+  const contact = phoneBook[phoneBook.length - 1];
+  printContact(contact.name, contact.number);
 }
 
 function printContact(name, number) {
@@ -44,13 +44,17 @@ function printContact(name, number) {
 
   btn.addEventListener("click", () => {
     contactElement.remove();
+    phoneBook = phoneBook.filter((c) => c.number !== number && c.name !== name);
   });
 }
 function validData(name, number) {
   if (name.length > 3 && number.length > 4) {
-    return true;
+    if (phoneBook.some((e) => e.name === name || e.number === number)) {
+      alert("Podana nazwa lub numer juz istnieje !");
+      return false;
+    } else return true;
   } else {
-    alert("Nie prawidlowy numer lub nazwa");
+    alert("Nie prawidlowy numer lub nazwa !");
     return false;
   }
 }
