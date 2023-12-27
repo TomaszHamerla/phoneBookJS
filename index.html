@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <title>Phone Book</title>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <h2>Phone Book</h2>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          class="form-control"
+        />
+      </div>
+      <button id="add-contact" class="btn btn-primary">Add Contact</button>
+
+      <h2>Search</h2>
+      <input type="text" id="search" class="form-control" />
+
+      <h2>Contacts</h2>
+      <div id="contactsList" class="list-group mb-3"></div>
+    </div>
+
+    <script src="file.js"></script>
+  </body>
+</html>
