@@ -13,7 +13,7 @@ class contact {
     this.number = number;
   }
 }
-const phoneBook = [];
+let phoneBook = [];
 
 document.getElementById("add-contact").addEventListener("click", addContact);
 
@@ -28,8 +28,6 @@ function addContact() {
 
 function displayContacts() {
   const contactsList = document.getElementById("contactsList");
-  contactsList.innerHTML = "";
-
   phoneBook.forEach((contact) => {
     printContact(contact.name, contact.number);
   });
@@ -39,6 +37,15 @@ function printContact(name, number) {
   const contactElement = document.createElement("label");
   contactsList.appendChild(contactElement);
   contactElement.textContent = `Name: ${name}, Phone number: ${number}`;
+  const btn = document.createElement("button");
+  btn.setAttribute("style", "color:red");
+  btn.textContent = "Remove contact";
+  contactElement.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    contactElement.remove();
+    phoneBook.filter((c) => c.name !== name);
+  });
 }
 function validData(name, number) {
   if (name.length > 3 && number.length > 4) {
