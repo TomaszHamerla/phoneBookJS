@@ -44,7 +44,6 @@ function printContact(name, number) {
 
   btn.addEventListener("click", () => {
     contactElement.remove();
-    phoneBook.filter((c) => c.name !== name);
   });
 }
 function validData(name, number) {
