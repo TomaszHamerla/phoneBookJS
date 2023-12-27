@@ -21,4 +21,22 @@ function addContact() {
   const name = document.getElementById("name").value;
   const number = document.getElementById("phoneNumber").value;
   phoneBook.push(new contact(name, number));
+  displayContacts();
+}
+
+function displayContacts() {
+  const contactsList = document.getElementById("contactsList");
+
+  contactsList.innerHTML = "";
+
+  phoneBook.forEach((contact) => {
+    printContact(contact.name, contact.number);
+  });
+}
+
+function printContact(name, number) {
+  const contactElement = document.createElement("label");
+
+  contactsList.appendChild(contactElement);
+  contactElement.textContent = `Name: ${name}, Phone number: ${number}`;
 }
