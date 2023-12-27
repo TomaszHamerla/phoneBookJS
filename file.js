@@ -26,9 +26,9 @@ function addContact() {
   }
   console.log(phoneBook.length);
 }
+const contactsList = document.getElementById("contactsList");
 
 function displayContacts() {
-  const contactsList = document.getElementById("contactsList");
   const contact = phoneBook[phoneBook.length - 1];
   printContact(contact.name, contact.number);
 }
@@ -36,6 +36,10 @@ function displayContacts() {
 function printContact(name, number) {
   const contactElement = document.createElement("label");
   contactsList.appendChild(contactElement);
+  contactElement.setAttribute(
+    "style",
+    "display: flex; align-items: center; justify-content: space-between;"
+  );
   contactElement.textContent = `Name: ${name}, Phone number: ${number}`;
   const btn = document.createElement("button");
   btn.setAttribute("style", "color:red");
@@ -57,4 +61,9 @@ function validData(name, number) {
     alert("Nie prawidlowy numer lub nazwa !");
     return false;
   }
+}
+document.getElementById("search").addEventListener("keyup", searchContacts);
+function searchContacts(text) {
+  const value = text.target.value;
+  console.log(value);
 }
