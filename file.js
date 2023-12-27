@@ -20,13 +20,14 @@ document.getElementById("add-contact").addEventListener("click", addContact);
 function addContact() {
   const name = document.getElementById("name").value;
   const number = document.getElementById("phoneNumber").value;
-  phoneBook.push(new contact(name, number));
-  displayContacts();
+  if (validData(name, number)) {
+    phoneBook.push(new contact(name, number));
+    displayContacts();
+  }
 }
 
 function displayContacts() {
   const contactsList = document.getElementById("contactsList");
-
   contactsList.innerHTML = "";
 
   phoneBook.forEach((contact) => {
@@ -36,7 +37,14 @@ function displayContacts() {
 
 function printContact(name, number) {
   const contactElement = document.createElement("label");
-
   contactsList.appendChild(contactElement);
   contactElement.textContent = `Name: ${name}, Phone number: ${number}`;
+}
+function validData(name, number) {
+  if (name.length > 3 && number.length > 4) {
+    return true;
+  } else {
+    alert("Nie prawidlowy numer lub nazwa");
+    return false;
+  }
 }
