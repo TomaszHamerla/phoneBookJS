@@ -7,6 +7,17 @@ document.getElementById("add-contact").addEventListener("click", () => {
   addContact(name, number);
 });
 
+document.getElementById("search").addEventListener("input", (event) => {
+  searchContact(event.target.value);
+});
+
+function searchContact(serchPhrase) {
+  const fileteredContacts = contacts.filter(
+    (c) => c.name.includes(serchPhrase) || c.number.includes(serchPhrase)
+  );
+  displayContacts(fileteredContacts);
+}
+
 function addContact(name, number) {
   if (name.length < 3) {
     alert("Contact name must be atleast 3 charactes long");
