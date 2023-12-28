@@ -33,6 +33,11 @@ function displayContacts(contactsToDisplay) {
     contactDiv.classList = "list-group-item";
     contactDiv.textContent = `Name: ${c.name}, phone number: ${c.number}`;
 
+    const removeButton = document.createElement("button");
+    removeButton.classList = "btn btn-danger float-right";
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", () => removeContact(c.name));
+    contactDiv.appendChild(removeButton);
     contactList.appendChild(contactDiv);
   });
 }
