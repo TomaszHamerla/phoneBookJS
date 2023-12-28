@@ -41,3 +41,8 @@ function displayContacts(contactsToDisplay) {
     contactList.appendChild(contactDiv);
   });
 }
+
+function removeContact(name) {
+  contacts = contacts.filter((c) => c.name !== name);
+  displayContacts(contacts);
+}
