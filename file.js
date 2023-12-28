@@ -4,7 +4,11 @@ document.getElementById("add-contact").addEventListener("click", () => {
   const name = document.getElementById("name").value;
   const number = document.getElementById("phoneNumber").value;
   console.log(name + number);
-  addContact(name, number);
+  const contactAdded = addContact(name, number);
+  if (contactAdded) {
+    document.getElementById("name").value = "";
+    document.getElementById("phoneNumber").value = "";
+  }
 });
 
 document.getElementById("search").addEventListener("input", (event) => {
@@ -34,6 +38,7 @@ function addContact(name, number) {
   }
   contacts.push({ name, number });
   displayContacts(contacts);
+  return true;
 }
 
 function displayContacts(contactsToDisplay) {
