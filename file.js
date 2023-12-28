@@ -1,4 +1,5 @@
 let contacts = [];
+
 document.getElementById("add-contact").addEventListener("click", () => {
   const name = document.getElementById("name").value;
   const number = document.getElementById("phoneNumber").value;
@@ -22,4 +23,16 @@ function addContact(name, number) {
   }
   contacts.push({ name, number });
   displayContacts(contacts);
+}
+
+function displayContacts(contactsToDisplay) {
+  const contactList = document.getElementById("contactsList");
+  contactList.innerHTML = "";
+  contactsToDisplay.forEach((c) => {
+    const contactDiv = document.createElement("div");
+    contactDiv.classList = "list-group-item";
+    contactDiv.textContent = `Name: ${c.name}, phone number: ${c.number}`;
+
+    contactList.appendChild(contactDiv);
+  });
 }
